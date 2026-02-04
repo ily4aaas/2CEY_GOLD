@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VINIS</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Noto+Sans+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="v-canvas-container">
+        <canvas id="neuralNet"></canvas>
+    </div>
+
+    <div class="os-wrapper">
+        <header class="os-header">
+            <div class="system-id">CORE_VERSION: 7.2.0</div>
+            <div class="system-time" id="digitalClock">00:00:00</div>
+        </header>
+
+        <main class="main-content">
+            <div class="branding-area">
+                <h1 class="vinis-logo">2CEY</h1>
+            </div>
+
+            <div class="dash-panel">
+                <div class="gauge-box">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="bg" cx="50" cy="50" r="45"></circle>
+                        <circle class="meter" cx="50" cy="50" r="45" id="loadGauge"></circle>
+                    </svg>
+                    <div class="gauge-text"> </div>
+                </div>
+                
+                <div class="stats-box">
+                    <div class="stat-line"><span>الدقة:</span> <span class="highlight">98.4%</span></div>
+                    <div class="stat-line"><span>الاستجابة:</span> <span class="highlight">12ms</span></div>
+                </div>
+            </div>
+
+            <div class="action-zone">
+                <div class="terminal-container" id="terminalText"></div>
+                
+                <a href="start.html" class="mega-button">
+                    <span class="btn-text">بدء  </span>
+                    <div class="btn-glow"></div>
+                </a>
+            </div>
+        </main>
+
+        <footer class="os-footer">
+            <div class="footer-node">CODE PROMO : 2cey</div>
+        </footer>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

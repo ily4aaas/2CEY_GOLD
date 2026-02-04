@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2cey | وحدة التحليل الراداري</title>
+    <link rel="stylesheet" href="results.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Noto+Sans+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="radar-environment">
+        <div class="radar-bg"><div class="radar-sweep"></div></div>
+
+        <div class="hud-container">
+            <header class="hud-header">
+                <div class="system-tag">DEEP_SCAN v8.0</div>
+                <div class="live-clock" id="clock">00:00:00</div>
+                <a href="index.html" class="abort-link">إنهاء</a>
+            </header>
+
+            <div class="mode-controller">
+                <div class="mode-label">  </div>
+                <div class="mode-btns">
+                    <button id="m2" class="active" onclick="switchMode(2)">X2</button>
+                    <button id="m3" onclick="switchMode(3)">X3</button>
+                </div>
+            </div>
+
+            <main class="matrix-display" id="matrixGrid"></main>
+
+            <div class="action-footer">
+                <button class="scan-btn" id="scanBtn" onclick="executeNeuralScan()">
+                    <span class="btn-text">  START</span>
+                </button>
+                <div class="security-status">اتصال مشفر: نشط</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="scanOverlay" class="scan-modal">
+        <div class="scanner-laser"></div>
+        <div class="quantum-loader"></div>
+        <h2 class="status-txt">جاري تحليل الإشارات...</h2>
+    </div>
+
+    <script src="results.js"></script>
+</body>
+</html>

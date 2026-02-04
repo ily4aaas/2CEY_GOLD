@@ -1,0 +1,331 @@
+/* VINIS SECURE OS - STYLESHEET 
+   CORE: AUTHENTICATION PORTAL
+   VERSION: 7.2.0 (STABLE)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Noto+Sans+Arabic:wght@400;700;900&display=swap');
+
+:root {
+    --cyan: #00f7ff;
+    --gold: #ffcc00;
+    --dark-prime: #02060a;
+    --dark-sec: #050a0f;
+    --red-alert: #ff3333;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border-lite: rgba(0, 247, 255, 0.2);
+}
+
+/* 1. إعدادات الهيكل الأساسي (Base Architecture) */
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--dark-prime);
+    color: #ffffff;
+    font-family: 'Noto Sans Arabic', sans-serif;
+    min-height: 100vh;
+    /* دعم التمرير السلس في الهواتف */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. زر الرجوع التقني (Advanced Back Navigation) */
+.back-btn {
+    position: fixed; /* ثابت ليظهر أثناء السكرول */
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--cyan);
+    border-radius: 4px;
+    color: var(--cyan);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 900;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.1);
+}
+
+.back-btn:hover {
+    background: var(--cyan);
+    color: #000;
+    box-shadow: 0 0 30px var(--cyan);
+    transform: scale(1.05);
+}
+
+/* 3. طبقة خلفية الأكواد (Code Rain Overlay) */
+.code-rain {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.1;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+}
+
+.code-rain span {
+    position: absolute;
+    color: var(--cyan);
+    animation: rainFall 10s linear infinite;
+}
+
+@keyframes rainFall {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* 4. إطار العرض الرئيسي (Viewport Container) */
+.auth-viewport {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 40px; /* مسافة للزر العلوي */
+}
+
+/* 5. بطاقة المصادقة (Auth Identity Card) */
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--glass);
+    border: 1px solid var(--border-lite);
+    border-radius: 30px;
+    padding: 50px 30px;
+    position: relative;
+    backdrop-filter: blur(25px);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.7), 
+                inset 0 0 20px rgba(0, 247, 255, 0.05);
+    animation: authEnter 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes authEnter {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 6. زخارف تقنية (HUD Ornaments) */
+.card-header {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scanner-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--cyan);
+    border-radius: 90%;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink { 50% { opacity: 0.2; } }
+
+.security-level {
+    font-size: 0.6rem;
+    color: var(--cyan);
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* 7. الهوية البصرية (VINIS Branding) */
+.logo-box {
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.vinis-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0;
+    background: linear-gradient(180deg, #fff 30%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(0, 247, 255, 0.3));
+    letter-spacing: 12px;
+}
+
+.auth-label {
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* 8. نموذج الإدخال (Complex Input UI) */
+.input-container {
+    margin: 30px 0;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-wrapper label {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-right: 10px;
+}
+
+#id-field {
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid #222;
+    padding: 22px;
+    border-radius: 15px;
+    color: var(--cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+    outline: none;
+    transition: all 0.4s;
+}
+
+#id-field:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 25px rgba(0, 247, 255, 0.15);
+    background: #000;
+}
+
+.input-hints {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 0.7rem;
+    color: #555;
+}
+
+/* 9. الزر التفاعلي (Mega Action Button) */
+.authorize-btn {
+    width: 100%;
+    padding: 25px;
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-family: 'Noto Sans Arabic', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.authorize-btn:hover {
+    background: var(--cyan);
+    color: #000;
+    box-shadow: 0 0 50px var(--cyan);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.6s;
+}
+
+.authorize-btn:hover .btn-shine {
+    left: 100%;
+}
+
+/* 10. تصميم النوافذ المنبثقة (Modal Architecture) */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.98);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 380px;
+    background: var(--dark-sec);
+    border: 2px solid var(--cyan);
+    border-radius: 25px;
+    padding: 50px 30px;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(0, 247, 255, 0.2);
+}
+
+.error-border {
+    border-color: var(--red-alert);
+}
+
+.encryption-wheel {
+    width: 70px;
+    height: 70px;
+    border: 3px solid rgba(0, 247, 255, 0.1);
+    border-top: 3px solid var(--cyan);
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 11. سجل البيانات (Data Stream Logs) */
+.log-stream {
+    background: rgba(0,0,0,0.5);
+    height: 120px;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 25px 0;
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: #444;
+    text-align: right;
+    overflow-y: hidden;
+}
+
+.log-stream div {
+    margin-bottom: 6px;
+    border-right: 2px solid var(--cyan);
+    padding-right: 8px;
+}
+
+/* 12. تحسينات الهواتف (Mobile Responsiveness) */
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 40px 20px;
+        border-radius: 0; /* شكل الحاوية الكاملة في الهواتف الصغيرة */
+        border: none;
+        background: transparent;
+        backdrop-filter: none;
+    }
+    
+    .vinis-text { font-size: 2.8rem; letter-spacing: 6px; }
+    #id-field { font-size: 1.5rem; padding: 18px; }
+    .back-btn { top: 15px; right: 15px; padding: 10px 15px; font-size: 0.7rem; }
+}

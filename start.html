@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2cey | مركز المصادقة المشفرة</title>
+    <link rel="stylesheet" href="start.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Noto+Sans+Arabic:wght@400;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="code-rain" id="codeRain"></div>
+
+    <div class="auth-viewport">
+        <a href="index.html" class="back-btn">
+            <span class="arrow">«</span> Go Back
+        </a>
+
+        <div class="auth-card">
+            <div class="card-header">
+                <div class="scanner-dot"></div>
+                <span class="security-level">مستوى الأمان: ALPHA-9</span>
+            </div>
+
+            <div class="logo-box">
+                <h1 class="vinis-text">2cey</h1>
+                <p class="auth-label">بوابة الوصول الموحدة</p>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <label for="id-field">أدخل معرف النظام (Access ID)</label>
+                    <input type="number" id="id-field" placeholder="0000 0000 00" oninput="limitInput(this)">
+                    <div class="input-glimmer"></div>
+                </div>
+                <div class="input-hints">
+                    <span>*  ID  يتكون من 10 أرقام</span>
+                    <span id="char-count">0/10</span>
+                </div>
+            </div>
+
+            <button class="authorize-btn" id="authBtn" onclick="initiateAuth()">
+                <span class="btn-shine"></span>
+                تفعيل  
+            </button>
+        </div>
+    </div>
+
+    <div id="processingModal" class="modal">
+        <div class="modal-content">
+            <div class="encryption-wheel"></div>
+            <h2 class="modal-title">جاري تشفير البيانات...</h2>
+            <div class="log-stream" id="logStream"></div>
+            <div class="progress-track">
+                <div class="progress-fill" id="pFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="errorModal" class="modal">
+        <div class="modal-content error-border">
+            <div class="error-icon">×</div>
+            <h2>فشل في المصادقة!</h2>
+            <p>المعرف الذي أدخلته غير موجود في قاعدة بيانات 2cey المركزية.</p>
+            <button class="retry-btn" onclick="closeModals()">إعادة المحاولة</button>
+        </div>
+    </div>
+
+    <script src="start.js"></script>
+</body>
+</html>
